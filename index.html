@@ -1,0 +1,124 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--linked css file from bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!--linked jquery from jsdn website-->
+    <title>JavaScript assignment</title>
+    <style>/* style different font and width for textbox*/
+        #operator{
+            width:300px;  
+        }
+        .d-grid{
+            align-content: center;
+        }
+        h1{
+            text-align:center;
+
+        }
+        .container{/*styled the container */
+            border: 1px solid black;
+            border-radius: 2px;
+            margin-top: 7%;
+        }
+        .row{
+            padding-top: 50px;
+        }
+        #res{
+        text-indent: 40%;
+        }
+        .form-label{
+            font-weight: bold;
+        }
+    </style>
+   
+</head>
+
+<body>
+    <h1>JavaScript Calculator</h1>
+ <div class="container"><!--used container class-->
+    <div class="row">
+        <div class="col-md-6 col-12 col-lg-4"><!--used different screen size to adjust the profile-->
+    <form name="Calculator"><!--created a form-->
+    <label for="number1" class="form-label">Number1:</label>
+    <br>
+  <input id="number1" style="width:300px" type="number" onkeyup="clearData()" placeholder="Number1" aria-label=".form-control-lg example"><!--used form using input,class,type-text and placeholder-->
+  <br>
+  </div>
+  <div class="col-md-6 col-12 col-lg-4">
+  <label for="operator" class="form-label">Operators:</label> 
+  <br>
+ <select id="operator" onchange="clearData()"><!--used select for selecting the different operators-->
+  <option selected>Choose any operation</option>
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+  </select> 
+  </div>
+  <br>
+  <div class="col-md-6 col-12 col-lg-4"><!--used different screen size to adjust the profile-->
+    <label for="number2" class="form-label">Number2:</label>
+    <br>
+  <input id="number2" style="width:300px" type="number" placeholder="Number2" onkeyup="clearData()" aria-label=".form-control-lg example"><!--used form using input,class,type-text and placeholder and used onkeyup and called the cleardata function-->
+<br><br>  
+</div>
+<div class="row">
+  <div class="col-md-6 col-12 col-lg-4 offset-md-4 offset-lg-4"><!--used different screen size to adjust the profile-->
+    <div class="d-grid gap-6">
+  <input type="button" class="btn btn-primary btn-primary-lg" onclick="calc()" value="submit"><!--used primary button for submit the form and called the function calc to perform the calculations-->
+<br><br>  
+</div>
+</div>
+</div>
+<br><br>
+<div class="row">
+<div class="col-md-6 col-12 col-lg-4 offset-md-4 offset-lg-4"><!--used different screen size to adjust the profile and using offset-->
+<label for="res" class="form-label">Answer:</label>
+<input id="Output" type="text" style="width:300px" value="Output" aria-label="readonly input example" readonly><!--used readonly in output textbox -->
+</div>
+</div>
+</div>
+ </div>
+<script>
+function clearData(){/*cleardata function is used to blank the output while changing the input*/
+    document.getElementById("Output").value="";
+  }
+  function calc()/*calc function is used to perform the various calculation*/
+  {
+     var number1=parseFloat(document.getElementById("number1").value);/*used parseFloat for accepting the floating value*/
+     var number2=parseFloat(document.getElementById("number2").value);
+    var  operator=(document.getElementById("operator").value);
+    if(isNaN(number1)||isNaN(number2))/*checking the input number is entered otherwise alert will display*/
+    {
+      alert("Enter the valid number");
+    }
+     else{ switch(operator){/*used switch for performing various calculations like addition,subtraction,Multiply and Division*/
+          case '+':
+              total=number1 + number2;//addition
+              break;
+              case '-':
+                  total=number1 - number2;//subtraction
+                  break;
+                  case '*':
+                      total=number1 * number2;//multiply
+                      break;
+                      case '/':
+                        if(number2===0)/*if number2 is 0 gave alert msg division by zero is not allowed*/ 
+                        {
+                          alert("Division by zero is not allowed");
+                        }
+                         else
+                         { 
+                          total=number1 / number2;//division
+                         }
+                          break;
+                         
+     }
+     document.getElementById("Output").value=total;//displayed output 
+    }
+  }
+  </script> <!--linked script links from bootstrap website-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
